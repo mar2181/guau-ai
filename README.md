@@ -1,53 +1,64 @@
-# GuauAI 🐕
+# 🐕 GuauAI
 
-> **Spanish-first AI dog behavior analysis and training recommendation platform**
+**Spanish-first AI dog behavior analysis and training recommendation platform.**
 
-GuauAI watches your dog — via video, audio, or photo — identifies the behavior in real time, and returns a precise, breed-aware correction recommendation in Spanish (and English). Powered by multimodal vision AI, a curated RAG knowledge base from top dog training literature, and a feedback loop that gets smarter with every session.
+> *"Guau"* is the Spanish onomatopoeia for a dog's bark. GuauAI watches, listens, and knows what your dog is communicating — then tells you exactly what to do about it, in Spanish.
 
 ---
 
-## The Problem
+## What It Does
 
-Dog owners — especially Spanish-speaking families — have no real AI tool that can watch their dog misbehave and tell them exactly what to do. Generic advice on YouTube doesn't account for breed, age, environment, or the specific trigger. Personal trainers cost $100/hr. Books are written in English. The gap is wide open.
+Record a short video or audio clip of your dog's behavior. GuauAI analyzes it — body language, tail position, ear posture, bark type, energy level — identifies the behavior category, and returns a plain-language explanation plus a step-by-step correction or training recommendation sourced from professional training literature.
 
-## The Solution
+**Languages:** Spanish (primary), English (secondary)
+**Platforms:** Mobile (iOS + Android), Web
 
-1. **Record the behavior** — video clip, photo, or audio on mobile
-2. **GuauAI analyzes it** — vision AI classifies the behavior (fear, dominance, resource guarding, play aggression, separation anxiety, etc.)
-3. **RAG retrieves the correction** — sourced from 15+ top training books and breed-specific guides
-4. **ElevenLabs delivers it in Spanish** — spoken, warm, clear
+---
+
+## Project Status
+
+🔴 **Pre-MVP — Research & Planning Phase**
+
+See [`PLAN.md`](./PLAN.md) for the full roadmap and research plan.
+See [`TOOLS_INVENTORY.md`](./TOOLS_INVENTORY.md) for the full stack at our disposal.
+
+---
+
+## Repo Structure
+
+```
+guau-ai/
+├── README.md              ← You are here
+├── PLAN.md                ← Full research + execution plan
+├── TOOLS_INVENTORY.md     ← Existing tools, APIs, skills at our disposal
+├── research/              ← Research notes, corpus sources, competitive intel
+├── knowledge-base/        ← Dog training literature, behavior taxonomy, prompts
+├── mvp-sop/               ← Step-by-step SOP to build and ship the MVP
+└── app/                   ← App code (when ready)
+```
+
+---
 
 ## Core Stack
 
 | Layer | Tool |
 |---|---|
-| Vision AI (Phase 1) | Claude Vision / GPT-4V (zero-shot) |
-| Vision AI (Phase 2) | Fine-tuned model on labeled behavior dataset |
-| Knowledge Base | Supabase + pgvector (RAG) |
-| LLM Orchestration | Claude API (Anthropic SDK) |
-| Voice Output | ElevenLabs (Spanish TTS) |
+| Vision AI (MVP) | Claude Vision / GPT-4V — zero-shot, no custom training needed |
+| Vision AI (v2) | Fine-tuned model on labeled behavior dataset |
+| Knowledge Base RAG | Supabase + pgvector + Cohere multilingual embeddings |
+| LLM Orchestration | Claude API (Anthropic SDK with prompt caching) |
+| Voice Output (Spanish) | ElevenLabs TTS |
 | Mobile App | React Native (Expo) |
-| Web Dashboard | Next.js on Vercel |
-| Database | Supabase (Postgres + pgvector) |
-| CLI Tooling | Printing Press (internal) |
-| CRM / Beta Users | Apollo.io |
-| Automation | Zapier |
-
-## Language Strategy
-
-- **Spanish first** — UI, voice output, training content, marketing
-- **English secondary** — toggle available, same underlying model
-- **Target market:** Spanish-speaking dog owners in US (RGV, SoCal, Florida, Chicago) + Mexico
-
-## Status
-
-- [ ] Research phase (see MASTER_PLAN.md)
-- [ ] Knowledge base construction
-- [ ] Vision AI pipeline (zero-shot MVP)
-- [ ] Mobile app shell
-- [ ] ElevenLabs voice integration
-- [ ] Beta launch (50 users)
+| Web Admin | Next.js on Vercel |
+| CLI Tooling | Printing Press (internal — generates API clients on demand) |
+| CRM / Beta | Apollo.io |
 
 ---
 
-*Built by Antigravity Digital — Mario Elizondo + Claude*
+## Core Team
+- Mario Elizondo — Product, Strategy, Partnerships
+- Antigravity Digital AI Stack — Research, Architecture, Build, QA
+
+---
+
+*GitHub: [mar2181/guau-ai](https://github.com/mar2181/guau-ai)*
